@@ -1,0 +1,12 @@
+lab/__pycache__/__init__.cpython-311.pyc
+lab/__pycache__/settings.cpython-311.pyc
+lab/__pycache__/urls.cpython-311.pyc
+lab/__pycache__/wsgi.cpython-311.pyc
+app/__pycache__/__init__.cpython-311.pyc
+app/__pycache__/admin.cpython-311.pyc
+app/__pycache__/apps.cpython-311.pyc
+app/__pycache__/models.cpython-311.pyc
+app/__pycache__/urls.cpython-311.pyc
+app/__pycache__/views.cpython-311.pyc
+app/migrations/__init__.py
+app/migrations/__pycache__/__init__.cpython-311.pyc
