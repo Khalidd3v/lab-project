@@ -91,3 +91,7 @@ def loginuser(request):
         
         
     return render(request, 'app/login.html')
+
+def logoutuser(request):
+    logout(request)
+    return redirect('login')

@@ -69,13 +69,20 @@
         </ul>
 
         <!-- Top Navigation: Right Menu -->
+        
         <ul class="nav navbar-right navbar-top-links">
-            <div style="margin-top:1rem; margin-right:3rem;">
-            {% comment %} <h5 style="display:inline-block; color:white; margin-right:8px;">{{request.user.username}}</h5> {% endcomment %}
-            <button class="btn btn-success">{{request.user.username | title}}</button>
-           <a class="btn btn-danger" href="#"> Logout</a>
+            
+        <div style="margin-top:1rem; margin-right:3rem;">
+
+            {% if user.is_authenticated%}
+            <a class="btn btn-success" href="#">{{request.user.username | title}}</a>
+            <a class="btn btn-danger" href="{% url 'logout' %}"> Logout</a>
+            {%else%}
+            <a class="btn btn-warning" href="{% url 'login' %}">Login</a>
+            {% endif %}
         </div>
         </ul>
+        
 
         <!-- Sidebar -->
         <div class="navbar-default sidebar" role="navigation">
@@ -97,6 +104,7 @@
                     </li>
                     <li>
                         <a href="{% url 'add_doctor' %}"><i class="fa fa-sitemap fa-fw"></i> Add Doctors</a>
+                        <a href=""><i class="fa fa-sitemap fa-fw"></i> Add New Test</a>
                         
                     </li>
                 </ul>
