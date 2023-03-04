@@ -70,18 +70,11 @@
 
         <!-- Top Navigation: Right Menu -->
         <ul class="nav navbar-right navbar-top-links">
-           
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> Username <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
-            </li>
+            <div style="margin-top:1rem; margin-right:3rem;">
+            {% comment %} <h5 style="display:inline-block; color:white; margin-right:8px;">{{request.user.username}}</h5> {% endcomment %}
+            <button class="btn btn-success">{{request.user.username | title}}</button>
+           <a class="btn btn-danger" href="#"> Logout</a>
+        </div>
         </ul>
 
         <!-- Sidebar -->
