@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Manage Patient
+{% endblock title %}
+   
+
+
+{% block content %}
+    
+
+    
+
+<style>
+th, td {
+  border-style:solid;
+  border-color: #96D4D4;
+}
+</style>
+
+
+<h2>Manage Patient</h2>
+
+<p>All the patient data are listed here , we have to change the design later as there is no search bar and paginations tabs</p>
+
+<table style="width:100%">
+  <tr>
+    <th>S. No</th>
+    <th>Doctor Name</th> 
+    <th>Patient Name</th>
+    <th>Gender</th>
+    <th>Patient Age</th>
+    <th>Address</th>
+    <th>Report Date</th>
+  </tr>
+    {% for p in patients %}
+  <tr>
+   
+    <td>{{forloop.counter}}</td>
+    <td>{{p.doctor}}</td>
+    <td>{{p.name}}</td>
+    <td>{{p.gender}}</td>
+    <td>{{p.age}}</td>
+    <td>{{p.address}}</td>
+    <td>{{p.report_date}}
+        <button><a href="{% url 'delete' p.id %}">Delete</a></button>
+        <button><a href="{% url 'update' p.id %}">Update</a></button>
+    </td>
+    
+
+    </tr>
+  {% endfor %}
+
+</table>
+
+{% endblock content %}

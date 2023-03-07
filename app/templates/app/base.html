@@ -38,7 +38,13 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     
+  
 </head>
 <body>
 
@@ -63,44 +69,20 @@
         </ul>
 
         <!-- Top Navigation: Right Menu -->
+        
         <ul class="nav navbar-right navbar-top-links">
-            <li class="dropdown navbar-inverse">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell fa-fw"></i> <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> New Comment
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>See All Alerts</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
-            </li>
+            
+        <div style="margin-top:1rem; margin-right:3rem;">
+
+            {% if user.is_authenticated%}
+            <a class="btn btn-success" href="#">{{request.user.username | title}}</a>
+            <a class="btn btn-danger" href="{% url 'logout' %}"> Logout</a>
+            {%else%}
+            <a class="btn btn-warning" href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
         </ul>
+        
 
         <!-- Sidebar -->
         <div class="navbar-default sidebar" role="navigation">
@@ -121,7 +103,8 @@
                         <a href="{% url 'home' %}" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Manage Patients Test</a>
+                        <a href="{% url 'add_doctor' %}"><i class="fa fa-sitemap fa-fw"></i> Add Doctors</a>
+                        <a href=""><i class="fa fa-sitemap fa-fw"></i> Add New Test</a>
                         
                     </li>
                 </ul>

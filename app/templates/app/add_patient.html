@@ -1,0 +1,52 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Add new patient
+{% endblock title %}
+    
+
+
+{% block content %}
+
+<h2 style="text-align:center;">Add Patient for Test</h2>
+<hr>
+<br>
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+    <div class="row" style="margin: 0 22rem">
+        <div class="col-sm-10">
+            <label>1: Select Doctor</label>
+            {{form.doctor}}
+            {% comment %} <input class="form-control" placeholder="Enter text"> {% endcomment %}
+            <br>
+            <label>2: Patient Name</label>
+            {% comment %} <input class="form-control" placeholder="Enter text"> {% endcomment %}
+            {{form.name}}
+            <br>
+            <label>3: Patient Gender</label>
+            {% comment %} <input class="form-control" placeholder="Enter text"> {% endcomment %}
+            {{form.gender}}
+            <br>
+            <label>4: Select Age</label>
+            {% comment %} <input class="form-control" placeholder="Enter text"> {% endcomment %}
+            {{form.age}}
+            <br>
+            <label>5: Report Date</label>
+            {% comment %} <input class="form-control" placeholder="Enter text"> {% endcomment %}
+            {{form.report_date }}
+            <br>
+            <label>6: Address</label>
+            {% comment %} <input class="form-control" placeholder="Enter text"> {% endcomment %}
+            {{form.address }}
+            <br>
+            <button class="btn btn-success" type="submit">Save</button>
+        </div>
+    </div>
+</form>
+</div>
+{% endblock content %}
+ 
