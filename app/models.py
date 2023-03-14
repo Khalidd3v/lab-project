@@ -1,5 +1,14 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
+
+
+
+class MyImage(models.Model):
+    image = models.ImageField(upload_to='images/')
+    caption = models.CharField(max_length=100)
+
+
 
 class Doctor(models.Model):
     name = models.CharField(max_length=32)
@@ -11,12 +20,18 @@ class Doctor(models.Model):
     def __str__(self):
         return self.name
 
+
+
+#Selected Test Model
+
+
+
 Patient_Gender = (("male","male"), ("female","female"))
 
-
 class Patient(models.Model):
+    
     doctor = models.ForeignKey(Doctor, on_delete=models.DO_NOTHING)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=32)
     gender = models.CharField(choices=Patient_Gender, default="Male", max_length=10)
     age = models.IntegerField()
     report_date = models.DateTimeField(default=timezone.now)
@@ -26,11 +41,14 @@ class Patient(models.Model):
     def __str__(self):
         return self.name
     
-#CBC TEST
+
+
+
+# #CBC TEST
 
 class CBCTest(models.Model):
-
-    cbc = models.BooleanField('CBC test', default=False, blank=True)
+    
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     Haemoglobin1 = models.CharField(max_length=20, blank=True)
     Total_RBC = models.CharField(max_length=20, blank=True)
     HCT = models.CharField(max_length=20, blank=True)
@@ -50,7 +68,7 @@ class CBCTest(models.Model):
 # biochemistry test
 class BioChemistryTest(models.Model):
     
-    biochemistry = models.BooleanField('Biochemistry Test', default=False, blank=True)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     hba1c = models.CharField(max_length=20, blank=True)
     b_sugar_r = models.CharField(max_length=20, blank=True)
     b_sugar_f = models.CharField(max_length=20, blank=True)
@@ -76,8 +94,8 @@ class BioChemistryTest(models.Model):
     
 # stool r/e  
 class StoolRETest(models.Model):
-      
-    stool_re = models.BooleanField('Stool R/E', default=False, blank=True)
+    
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     color = models.CharField(max_length=20, blank=True)
     mucus = models.CharField(max_length=20, blank=True)
     ova = models.CharField(max_length=20, blank=True)
@@ -90,8 +108,8 @@ class StoolRETest(models.Model):
 
 # urine_re
 class UrineReTest(models.Model):
-
-    m_examination = models.BooleanField('Microscopic Examination', default=False, blank=True)
+    
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     ph = models.CharField(max_length=20, blank=True)
     sugar = models.CharField(max_length=20, blank=True)
     albumin = models.CharField(max_length=20, blank=True)
@@ -107,8 +125,8 @@ class UrineReTest(models.Model):
 
 #serology
 class SerologyTest(models.Model):
-
-    serology = models.BooleanField('Serology', default=False, blank=True)
+    
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     twenty = models.CharField(max_length=20, blank=True)
     fourty = models.CharField(max_length=20, blank=True)
     sixty = models.CharField(max_length=20, blank=True)
@@ -167,8 +185,8 @@ class SerologyTest(models.Model):
 
 # semen 
 class SemenTest(models.Model):
-
-    semen = models.BooleanField('Semen', default=False, blank=True)
+    
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     total_sperm = models.CharField(max_length=20, blank=True)
     ejaculate_volume = models.CharField(max_length=20, blank=True)
     sperm_concentration = models.CharField(max_length=20, blank=True)
@@ -178,14 +196,14 @@ class SemenTest(models.Model):
 
 # crp 
 class CRPTest(models.Model):
-
-    test_crp = models.BooleanField('Crp', default=False, blank=True)
+    
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     crps = models.CharField(max_length=20, blank=True)
 
 # thyroid
 class ThyroidTest(models.Model):
-
-    thyroid = models.BooleanField('Thyroid', default=False, blank=True)
+    
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     tsh = models.CharField(max_length=20, blank=True)
     t4 = models.CharField(max_length=20, blank=True)
     t4_free = models.CharField(max_length=20, blank=True)
@@ -197,8 +215,8 @@ class ThyroidTest(models.Model):
 
 # kedney function test
 class KedneyFunctionTest(models.Model):
-
-    kidney_function = models.BooleanField('Kidney Function', default=False, blank=True)
+    
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     bun = models.CharField(max_length=20, blank=True)
     cr = models.CharField(max_length=20, blank=True)
     ua = models.CharField(max_length=20, blank=True)
@@ -215,7 +233,7 @@ class KedneyFunctionTest(models.Model):
 # Liver Function
 class LiverFunctionTest(models.Model):
 
-    liver_function = models.BooleanField('Liver Function', default=False, blank=True)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     alt_gpt = models.CharField(max_length=20, blank=True)
     ast_got = models.CharField(max_length=20, blank=True)
     acp = models.CharField(max_length=20, blank=True)
@@ -230,8 +248,10 @@ class LiverFunctionTest(models.Model):
     y_gt = models.CharField(max_length=20, blank=True)
     ttt = models.CharField(max_length=20, blank=True)
 
+# Glucose_BF Test Model
+class Glucose_BFTest(models.Model):
 
-    glucose_bf = models.BooleanField('Glucose and blood fat', default=False, blank=True)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     glu = models.CharField(max_length=20, blank=True)
     apo_a1 = models.CharField(max_length=20, blank=True)
     tg = models.CharField(max_length=20, blank=True)
@@ -240,4 +260,172 @@ class LiverFunctionTest(models.Model):
     hbaic_g = models.CharField(max_length=20, blank=True)
     apo_b = models.CharField(max_length=20, blank=True)
     t_cho = models.CharField(max_length=20, blank=True)
+
+
+# # #main test models 
+
+# class Tests(models.Model):
+#     patient = models.ForeignKey(Patient, on_delete=models.Case, blank=True, null=True, default="")
+#     identifier = models.CharField(max_length=100, blank=False)
+
+#     label_1 = models.CharField(max_length=32, blank=True, null=True)
+#     value_1 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_2 = models.CharField(max_length=32, blank=True, null=True)
+#     value_2 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_3 = models.CharField(max_length=32, blank=True, null=True)
+#     value_3 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_4 = models.CharField(max_length=32, blank=True, null=True)
+#     value_4 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_5 = models.CharField(max_length=32, blank=True, null=True)
+#     value_5 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_6 = models.CharField(max_length=32, blank=True, null=True)
+#     value_6 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_7 = models.CharField(max_length=32, blank=True, null=True)
+#     value_7 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_8 = models.CharField(max_length=32, blank=True, null=True)
+#     value_8 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_9 = models.CharField(max_length=32, blank=True, null=True)
+#     value_9 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_10 = models.CharField(max_length=32, blank=True, null=True)
+#     value_10 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_11 = models.CharField(max_length=32, blank=True, null=True)
+#     value_11 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_12 = models.CharField(max_length=32, blank=True, null=True)
+#     value_12 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_13 = models.CharField(max_length=32, blank=True, null=True)
+#     value_13 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_14 = models.CharField(max_length=32, blank=True, null=True)
+#     value_14 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_15 = models.CharField(max_length=32, blank=True, null=True)
+#     value_15 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_16 = models.CharField(max_length=32, blank=True, null=True)
+#     value_16 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_17 = models.CharField(max_length=32, blank=True, null=True)
+#     value_17 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_18 = models.CharField(max_length=32, blank=True, null=True)
+#     value_18 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_19 = models.CharField(max_length=32, blank=True, null=True)
+#     value_19 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_20 = models.CharField(max_length=32, blank=True, null=True)
+#     value_20 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_21 = models.CharField(max_length=32, blank=True, null=True)
+#     value_21 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_22 = models.CharField(max_length=32, blank=True, null=True)
+#     value_22 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_22 = models.CharField(max_length=32, blank=True, null=True)
+#     value_22 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_23 = models.CharField(max_length=32, blank=True, null=True)
+#     value_23 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_24 = models.CharField(max_length=32, blank=True, null=True)
+#     value_24 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_25 = models.CharField(max_length=32, blank=True, null=True)
+#     value_25 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_26 = models.CharField(max_length=32, blank=True, null=True)
+#     value_26 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_27 = models.CharField(max_length=32, blank=True, null=True)
+#     value_27 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_28 = models.CharField(max_length=32, blank=True, null=True)
+#     value_28 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_29 = models.CharField(max_length=32, blank=True, null=True)
+#     value_29 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_30 = models.CharField(max_length=32, blank=True, null=True)
+#     value_30 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_31 = models.CharField(max_length=32, blank=True, null=True)
+#     value_31 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_32 = models.CharField(max_length=32, blank=True, null=True)
+#     value_32 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_33 = models.CharField(max_length=32, blank=True, null=True)
+#     value_33 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_34 = models.CharField(max_length=32, blank=True, null=True)
+#     value_34 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_35 = models.CharField(max_length=32, blank=True, null=True)
+#     value_35 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_36 = models.CharField(max_length=32, blank=True, null=True)
+#     value_36 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_37 = models.CharField(max_length=32, blank=True, null=True)
+#     value_37 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_38 = models.CharField(max_length=32, blank=True, null=True)
+#     value_38 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_39 = models.CharField(max_length=32, blank=True, null=True)
+#     value_39 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_40 = models.CharField(max_length=32, blank=True, null=True)
+#     value_40 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_41 = models.CharField(max_length=32, blank=True, null=True)
+#     value_41 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_42 = models.CharField(max_length=32, blank=True, null=True)
+#     value_42 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_43 = models.CharField(max_length=32, blank=True, null=True)
+#     value_43 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_44 = models.CharField(max_length=32, blank=True, null=True)
+#     value_44 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_45 = models.CharField(max_length=32, blank=True, null=True)
+#     value_45 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_46 = models.CharField(max_length=32, blank=True, null=True)
+#     value_46 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_47 = models.CharField(max_length=32, blank=True, null=True)
+#     value_47 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_48 = models.CharField(max_length=32, blank=True, null=True)
+#     value_48 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_49 = models.CharField(max_length=32, blank=True, null=True)
+#     value_49 = models.CharField(max_length=32, blank=True, null=True)
+
+#     label_50 = models.CharField(max_length=32, blank=True, null=True)
+#     value_50 = models.CharField(max_length=32, blank=True, null=True)
+
+#     def __str__(self):
+#         return self.identifier
+#     class Meta:
+#         verbose_name="Tests"
+#         verbose_name_plural="Tests"
+    
+
 

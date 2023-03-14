@@ -1,0 +1,43 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Manage Tests
+{% endblock title %}
+    
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+      <div class="panel panel-green">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-3">
+              <i class="fa-solid fa-vial-virus fa-5x"></i>
+            </div>
+            <div class="col-xs-9 text-right">
+              <div class="huge">Add New Test</div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <a href="{% url 'add_new_test' %}">
+          <div class="panel-footer">
+            <span class="pull-left">Views All Tests</span>
+            <span class="pull-right"
+              ><i class="fa fa-arrow-circle-right"></i
+            ></span>
+  
+            <div class="clearfix"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock content %}

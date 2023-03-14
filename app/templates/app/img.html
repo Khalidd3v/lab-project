@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Add new patient
+{% endblock title %}
+    
+
+
+{% block content %}
+<h1>Upload Image</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="image">
+    <button type="submit">Upload</button>
+  </form>
+<br><br><br>
+
+<img src="{{ my_image.image.url }}" alt="{{ my_image.caption }}">
+
+
+{% endblock content %}
+ 

@@ -9,3 +9,5 @@ MyAllModels = (Patient, Doctor, CBCTest, BioChemistryTest,
 
 for m in MyAllModels:
     admin.site.register(m)
+
+
