@@ -9,69 +9,70 @@
     
 
 {% block content %}
-<div class="container">
-  <h2 class="text-center">All the Test Fields You have Selected</h2>
-  <hr>
-  <br>
-  <div class="row">
-    <div class="col-sm-8 mb-3">
 
-      {% if test1_form %}
-      <div class="card">
-        <h2 class="card-header text-danger">CBC Test *</h2>
-        {% csrf_token %}
-        <div class="card-body">
-          <div class="form-group">
-            {{ test1_form.label_tag }}
-            {{ test1_form }}
+
+    <h2 class="text-center">All the Test Fields You have Selected</h2>
+
+      <div class="container" style="margin-left:30px;">
+        <hr>
+        <br>
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-8 mb-3">
+          {% if test1_form %}
+          <div class="card">
+            <h2 class="card-header text-danger">CBC Test *</h2>
+            <div class="card-body">
+              <div class="form-group">
+                {{ test1_form.label_tag }}
+                {{ test1_form.as_p }}
+              </div>
+            </div>
           </div>
+          {% endif %}
+
+        </div>
+        <div class="col-sm-8 mb-3">
+
+          {% if test2_form %}
+          <div class="card">
+            <h2 class="card-header text-danger">Bio Chemistry Test *</h2>
+            <div class="card-body">
+              <div class="form-group">
+                {{ test2_form.label_tag }}
+                {{ test2_form }}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+        <div class="col-sm-8 mb-3">
+
+          {% if test3_form %}
+          <div class="card">
+            <h2 class="card-header text-danger">Stool RE Test</h2>
+            <div class="card-body">
+              <div class="form-group">
+                {{ test3_form.label_tag }}
+                {{ test3_form }}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
         </div>
       </div>
-      {% endif %}
-
-    </div>
-    <div class="col-sm-8 mb-3">
-
-      {% if test2_form %}
-      <div class="card">
-        <h2 class="card-header text-danger">Bio Chemistry Test *</h2>
-        {% csrf_token %}
-        <div class="card-body">
-          <div class="form-group">
-            {{ test2_form.label_tag }}
-            {{ test2_form }}
-          </div>
+      <div class="row justify-content-center">
+        <div class="col-sm-8 col-md-8">
+          <button type="submit" class="btn btn-primary btn-block mt-3">Save</button>
+          <br><br><br>
+          <hr>
         </div>
       </div>
-      {% endif %}
-
-    </div>
-    <div class="col-sm-8 mb-3">
-
-      {% if test3_form %}
-      <div class="card">
-        <h2 class="card-header text-danger">Stool RE Test</h2>
-        {% csrf_token %}
-        <div class="card-body">
-          <div class="form-group">
-            {{ test3_form.label_tag }}
-            {{ test3_form }}
-          </div>
-        </div>
+        </form>
       </div>
-      {% endif %}
-
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-sm-6 col-md-6">
-      <button type="submit" class="btn btn-primary btn-block mt-3">Save</button>
-      <br><br><br>
-      <hr>
-    </div>
-  </div>
-</div>
 {% endblock content %}
-
 
 

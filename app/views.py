@@ -163,7 +163,7 @@ def selected_tests(request):
             test3 = test3_form.save(commit=False)
             test3.patient_id = patient_id
             test3.save()
-        return redirect('home')
+        return redirect('result', pk=test1.id if test1_form.is_valid() else test2.id if test2_form.is_valid() else test3.id)
     return render(request, 'app/selected_tests.html', {'test1_form': test1_form, 'test2_form': test2_form, 'test3_form': test3_form})
 
 

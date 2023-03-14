@@ -50,3 +50,8 @@ app/migrations/__pycache__/0010_glucose_bftest_remove_biochemistrytest_biochemis
 app/migrations/__pycache__/0011_alter_patient_name.cpython-311.pyc
 app/migrations/__pycache__/0012_selectedtest_patient_tests.cpython-311.pyc
 app/__pycache__/forms.cpython-311.pyc
+app/__pycache__/forms.cpython-311.pyc
+app/__pycache__/forms.cpython-311.pyc
+app/__pycache__/forms.cpython-311.pyc
+app/__pycache__/forms.cpython-311.pyc
+app/migrations/0009_biochemistrytest_cbctest_crptest_kedneyfunctiontest_and_more.py
