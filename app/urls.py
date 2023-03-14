@@ -10,6 +10,19 @@ urlpatterns = [
     path("delete/<str:pk>/", views.deleteit, name="delete"),
     path("update/<str:pk>/", views.updatepatient, name="update"),
     path("login", views.loginuser, name="login"),
-    path("logout/", views.logoutuser, name="logout")
+    path("logout/", views.logoutuser, name="logout"),
+    path("sub-manage-tests/", views.submanagetest , name="sub_manage_test"),
+    # path("add-new-test/", views.addnewtest , name="add_new_test"),
+    path("select-test/", views.selecttest , name="select_test"),
+    path("selected-tests/", views.selected_tests , name="selected_tests"),
+    # path("selected-tests/", views.selecttest , name="selected_tests"),
+
+    path('upload/', views.upload_image, name='upload_image'),
+    path('images/', views.my_images, name='my_images'),
+
+  
+    
+
+
     
 ]
