@@ -36,22 +36,21 @@ class RegisterDoctorForm(forms.ModelForm):
 
 
 
-#----------------------------------------Select Test CHECKBOX FORMS----------------------------------------------------------------------
+#----------------------------------------Uploud Image FORMS----------------------------------------------------------------------
 
 
 
-# class SelectTestForm(forms.Form):
-    
-#     CBCTest = forms.BooleanField(label='CBCTest', required=False)
-#     BioChemistryTest = forms.BooleanField(label='BioChemistryTest', required=False)
-#     StoolRETest = forms.BooleanField(label='StoolRETest', required=False)
+class MyImageForm(forms.ModelForm):
+    class Meta:
+        model = MyImage
+        fields = ('image', 'caption')
 
 
 
 
 
 
-# #----------------------------------------All Tests Forms Starts Here----------------------------------------------------------------------
+# #----------------------------------------Select Test Forms Starts Here----------------------------------------------------------------------
 
 
 
@@ -63,7 +62,8 @@ class TestSelectionForm(forms.Form):
     )
     tests = forms.MultipleChoiceField(choices=test_choices, widget=forms.CheckboxSelectMultiple)
     patient_id = forms.CharField(widget=forms.HiddenInput(), required=False)
-# #----------------------------------------All Tests Forms Starts Here----------------------------------------------------------------------
+
+#----------------------------------------All Tests Forms Starts Here----------------------------------------------------------------------
 
  #cbc test form       
 class CBCTestForm(forms.ModelForm):
@@ -150,167 +150,6 @@ class StoolRETestForm(forms.ModelForm):
 
 
 
-class MyImageForm(forms.ModelForm):
-    class Meta:
-        model = MyImage
-        fields = ('image', 'caption')
 
 
-# class AddTestForm(forms.ModelForm):
-#     class Meta:
-#         model = Tests
-#         fields = '__all__'
-#         exclude = ['patient']
-#         widgets = {
 
-#             'label_1': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_1': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_2': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_2': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_3': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_3': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_4': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_4': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_5': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_5': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_6': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_6': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_7': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_7': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_8': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_8': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_9': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_9': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_10': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_10': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_11': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_11': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_12': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_12': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_13': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_13': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_14': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_14': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_15': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_15': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_16': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_16': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_17': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_17': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_18': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_18': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_19': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_19': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_20': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_20': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_21': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_21': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_22': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_22': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_23': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_23': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_24': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_24': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_25': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_25': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_26': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_26': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_27': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_27': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_28': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_28': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_29': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_29': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-
-#             'label_30': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_30': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_31': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_31': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_32': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_32': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_33': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_33': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_34': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_34': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_35': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_35': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_36': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_36': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_37': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_37': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_38': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_38': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_39': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_39': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_40': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_40': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_41': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_41': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_42': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_42': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_43': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_43': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_44': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_44': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_45': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_45': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_46': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_46': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_47': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_47': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_48': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_48': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_49': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_49': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-
-#             'label_50': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Name of Test Attribute'}),
-#             'value_50': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value of Test Attribute'}),
-#         }

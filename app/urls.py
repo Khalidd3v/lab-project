@@ -14,11 +14,10 @@ urlpatterns = [
     path("sub-manage-tests/", views.submanagetest , name="sub_manage_test"),
     path("select-test/", views.selecttest , name="select_test"),
     path("selected-tests/", views.selected_tests , name="selected_tests"),
-    # path('Test-Result/', views.testresult, name='result'),
-    
-
+    path('Test-Result/<int:pk>/', views.testresult, name='result'),
     path('upload/', views.upload_image, name='upload_image'),
     path('images/', views.my_images, name='my_images'),
+    
 
   
     

@@ -55,3 +55,6 @@ app/__pycache__/forms.cpython-311.pyc
 app/__pycache__/forms.cpython-311.pyc
 app/__pycache__/forms.cpython-311.pyc
 app/migrations/0009_biochemistrytest_cbctest_crptest_kedneyfunctiontest_and_more.py
+app/__pycache__/forms.cpython-311.pyc
+app/migrations/0002_alter_biochemistrytest_patient_alter_cbctest_patient_and_more.py
+app/migrations/__pycache__/0002_alter_biochemistrytest_patient_alter_cbctest_patient_and_more.cpython-311.pyc

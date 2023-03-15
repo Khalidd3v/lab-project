@@ -163,9 +163,19 @@ def selected_tests(request):
             test3 = test3_form.save(commit=False)
             test3.patient_id = patient_id
             test3.save()
-        return redirect('result', pk=test1.id if test1_form.is_valid() else test2.id if test2_form.is_valid() else test3.id)
+        return redirect('result', pk=patient_id)
     return render(request, 'app/selected_tests.html', {'test1_form': test1_form, 'test2_form': test2_form, 'test3_form': test3_form})
 
 
 
-
+@login_required
+def testresult(request, pk):
+    # Get the patient object with the given ID
+    patient = Patient.objects.get(pk=pk)
+    # Get all the CBC tests related to this patient
+    cbc_tests = patient.cbc_tests.all()
+    # Get all the biochemistry tests related to this patient
+    biochemistry_tests = patient.bio_chemistry_tests.all()
+    # Get all the stool r/e tests related to this patient
+    stoolre_tests = patient.stoolre_tests.all()
+    return render(request, 'app/generate_result.html', {'patient': patient, 'cbc_tests': cbc_tests, 'biochemistry_tests': biochemistry_tests, 'stoolre_tests': stoolre_tests})
