@@ -147,6 +147,14 @@ def selected_tests(request):
     test1_form = CBCTestForm(request.POST or None, prefix='CBC Test') if 'CBC Test' in selected_tests else None
     test2_form = BioChemistryTestForm(request.POST or None, prefix='Bio Chemistry Test') if 'Bio Chemistry Test' in selected_tests else None
     test3_form = StoolRETestForm(request.POST or None, prefix='Stool RE Test') if 'Stool RE Test' in selected_tests else None
+    test4_form = UrineRETestForm(request.POST or None, prefix='Urine RE Test') if 'Urine RE Test' in selected_tests else None
+    test5_form = SerologyTestForm(request.POST or None, prefix='Serology Test') if 'Serology Test' in selected_tests else None
+    test6_form = SemenTestForm(request.POST or None, prefix='Semen Test') if 'Semen Test' in selected_tests else None
+    test7_form = CRPTestForm(request.POST or None, prefix='CRP Test') if 'CRP Test' in selected_tests else None
+    test8_form = ThyroidTestForm(request.POST or None, prefix='Thyroid Test') if 'Thyroid Test' in selected_tests else None
+    test9_form = KedneyFunctionTestForm(request.POST or None, prefix='Kedney Function Test') if 'Kedney Function Test' in selected_tests else None
+    test10_form = LiverFunctionTestForm(request.POST or None, prefix='Liver Function Test') if 'Liver Function Test' in selected_tests else None
+    test11_form = GlucoseBFTestForm(request.POST or None, prefix='Glucose BF Test') if 'Glucose BF Test' in selected_tests else None
     if request.method == 'POST':
         # Save modelforms for selected tests with patient ID
         if test1_form is not None and test1_form.is_valid():
@@ -161,8 +169,44 @@ def selected_tests(request):
             test3 = test3_form.save(commit=False)
             test3.patient_id = patient_id
             test3.save()
+        if test4_form is not None and test4_form.is_valid():
+            test4 = test4_form.save(commit=False)
+            test4.patient_id = patient_id
+            test4.save()
+        if test5_form is not None and test5_form.is_valid():
+            test5 = test5_form.save(commit=False)
+            test5.patient_id = patient_id
+            test5.save()
+        if test6_form is not None and test6_form.is_valid():
+            test6 = test6_form.save(commit=False)
+            test6.patient_id = patient_id
+            test6.save()
+        if test7_form is not None and test7_form.is_valid():
+            test7 = test7_form.save(commit=False)
+            test7.patient_id = patient_id
+            test7.save()
+        if test8_form is not None and test8_form.is_valid():
+            test8 = test8_form.save(commit=False)
+            test8.patient_id = patient_id
+            test8.save()
+        if test9_form is not None and test9_form.is_valid():
+            test9 = test9_form.save(commit=False)
+            test9.patient_id = patient_id
+            test9.save()
+        if test10_form is not None and test10_form.is_valid():
+            test10 = test10_form.save(commit=False)
+            test10.patient_id = patient_id
+            test10.save()
+        if test11_form is not None and test11_form.is_valid():
+            test11 = test11_form.save(commit=False)
+            test11.patient_id = patient_id
+            test11.save()
         return redirect('result', pk=patient_id)
-    return render(request, 'app/selected_tests.html', {'test1_form': test1_form, 'test2_form': test2_form, 'test3_form': test3_form})
+    return render(request, 'app/selected_tests.html', {'test1_form': test1_form,
+                             'test2_form': test2_form, 'test3_form': test3_form,
+                               'test4_form': test4_form, 'test5_form': test5_form,
+                               'test6_form': test6_form, 'test7_form': test7_form
+                                                       })
 
 
 
