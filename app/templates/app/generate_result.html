@@ -45,6 +45,8 @@
         </div>
     </div>
 
+    {% if cbc_tests and biochemistry_tests and stoolre_tests and urine_tests and semen_tests and crp_tests and thyroid_tests and kedney_function_tests and liver_function_tests and glucose_bf_tests %}
+
     <div class="row">
         <div class="col-lg-10 fs-sm-6">
             
@@ -385,152 +387,6 @@
                         </div>
                     {% endif %}
 
-
-                    {% if serology_tests %}
-                        
-                        <table class="table">
-
-                            {% for test in serology_tests %}
-                            <thead>
-                                
-                                <tr style="column-gap: 30px;">
-                                    <th scope="col" rowspan="3">Widal &nbsp;</th>
-                                    <th>Dilution</th>
-                                    <th>1/20</th>
-                                    <th>1/40</th>
-                                    <th>1/80</th>
-                                    <th>1/160</th>
-                                    <th>1/320</th>
-                                </tr>
-                                <tr>
-                                    <th>TO</th>
-                                    <td>{{test.twenty}}</td>
-                                    <td>{{test.fourty}}</td>
-                                    <td>{{test.sixty}}</td>
-                                    <td>{{test.one_sixty}}</td>
-                                    <td>{{test.three_twenty}}</td>
-                                </tr>
-                                <tr>
-                                    <th>TH</th>
-                                    <td>{{test.th_twenty}}</td>
-                                    <td>{{test.th_fourty}}</td>
-                                    <td>{{test.th_sixty}}</td>
-                                    <td>{{test.th_one_sixty}}</td>
-                                    <td>{{test.th_three_twenty}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="col" rowspan="3">Brucella &nbsp;</th>
-                                    <th>Dilution</th>
-                                    <td>{{test.dil_twenty}}</td>
-                                    <td>{{test.dil_fourty}}</td>
-                                    <td>{{test.dil_sixty}}</td>
-                                    <td>{{test.dil_one_sixty}}</td>
-                                    <td>{{test.dil_three_twenty}}</td>
-                                </tr>
-                                <tr>
-                                    <th>BA</th>
-                                    <td>{{test.ba_twenty}}</td>
-                                    <td>{{test.ba_fourty}}</td>
-                                    <td>{{test.ba_sixty}}</td>
-                                    <td>{{test.ba_one_sixty}}</td>
-                                    <td>{{test.ba_three_twenty}}</td>
-                                </tr>
-                                <tr>
-                                    <th>BM</th>
-                                    <td>{{test.bm_twenty}}</td>
-                                    <td>{{test.bm_fourty}}</td>
-                                    <td>{{test.bm_sixty}}</td>
-                                    <td>{{test.bm_one_sixty}}</td>
-                                    <td>{{test.bm_three_twenty}}</td>
-                                </tr>
-                                          
-                            </thead>
-                            <tbody>
-
-                                <tr>
-                                    <th></th>
-                                    <th>Taxo Plasma</th>
-                                    <th>ig:</th>
-                                    <td>{{test.ig_taxo}}</td>
-                                    <th>igm:</th>
-                                    <td>{{test.igm_taxo}}</td>
-                                </tr>
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>VDRL</th>
-                                            <td>{{test.vdrl}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>HBS (ag)</th>
-                                            <td>{{test.hbs_ag}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>HBS (ab)</th>
-                                            <td>{{test.hbs_ag}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>HIV Aids</th>
-                                            <td>{{test.hiv_aids}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>ASO TITRE</th>
-                                            <td>{{test.aso_titre}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>R.A FACTOR</th>
-                                            <td>{{test.ra_factor}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>H. PYLORI</th>
-                                            <td>{{test.h_pylori}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>TB. ICT</th>
-                                            <td>{{test.tb_ict}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>TYPHIOD</th>
-                                            <th>Ig G:</th>
-                                            <td style="text-align: left;">{{test.typhiod_ig}}</td>
-                                            <th>IgM:</th>
-                                            <td>{{test.typhiod_igm}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>DANGUE NS1</th>
-                                            <td>{{test.dangue_ns1}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>DANGUE</th>
-                                            <th>Ig G:</th>
-                                            <td>{{test.dangue_ig}}</td>
-                                            <th>IgM:</th>
-                                            <td>{{test.dangue_igm}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>BLOOD GROUP</th>
-                                            <td>{{test.bloodgroup}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>RH FACTOR</th>
-                                            <td>{{test.rh_factor}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>CROSS MATCH</th>
-                                            <td>{{test.cross_match}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>PREGNANCY</th>
-                                            <td>{{test.pregnancy}}</td>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </tbody>
-                            {% endfor %}
-                        </table>
-                        
-                    {% endif %}
-
                     {% if semen_tests %}
 
                         <div>
@@ -854,16 +710,166 @@
 
                     {% endif %}
                    
+    {%else%}
+                    {% if serology_tests %}
+                     <br>
+                     <hr>
+                     <h4 class="text-center">All the Test Elements and it's Results</h4>
+                     <hr>
+                     <br>                   
+                    <table class="table">
+
+                        {% for test in serology_tests %}
+                        <thead>
+                            
+                            <tr style="column-gap: 30px;">
+                                <th scope="col" rowspan="3">Widal &nbsp;</th>
+                                <th>Dilution</th>
+                                <th>1/20</th>
+                                <th>1/40</th>
+                                <th>1/80</th>
+                                <th>1/160</th>
+                                <th>1/320</th>
+                            </tr>
+                            <tr>
+                                <th>TO</th>
+                                <td>{{test.twenty}}</td>
+                                <td>{{test.fourty}}</td>
+                                <td>{{test.sixty}}</td>
+                                <td>{{test.one_sixty}}</td>
+                                <td>{{test.three_twenty}}</td>
+                            </tr>
+                            <tr>
+                                <th>TH</th>
+                                <td>{{test.th_twenty}}</td>
+                                <td>{{test.th_fourty}}</td>
+                                <td>{{test.th_sixty}}</td>
+                                <td>{{test.th_one_sixty}}</td>
+                                <td>{{test.th_three_twenty}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="col" rowspan="3">Brucella &nbsp;</th>
+                                <th>Dilution</th>
+                                <td>{{test.dil_twenty}}</td>
+                                <td>{{test.dil_fourty}}</td>
+                                <td>{{test.dil_sixty}}</td>
+                                <td>{{test.dil_one_sixty}}</td>
+                                <td>{{test.dil_three_twenty}}</td>
+                            </tr>
+                            <tr>
+                                <th>BA</th>
+                                <td>{{test.ba_twenty}}</td>
+                                <td>{{test.ba_fourty}}</td>
+                                <td>{{test.ba_sixty}}</td>
+                                <td>{{test.ba_one_sixty}}</td>
+                                <td>{{test.ba_three_twenty}}</td>
+                            </tr>
+                            <tr>
+                                <th>BM</th>
+                                <td>{{test.bm_twenty}}</td>
+                                <td>{{test.bm_fourty}}</td>
+                                <td>{{test.bm_sixty}}</td>
+                                <td>{{test.bm_one_sixty}}</td>
+                                <td>{{test.bm_three_twenty}}</td>
+                            </tr>
+                                    
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <th></th>
+                                <th>Taxo Plasma</th>
+                                <th>ig:</th>
+                                <td>{{test.ig_taxo}}</td>
+                                <th>igm:</th>
+                                <td>{{test.igm_taxo}}</td>
+                            </tr>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>VDRL</th>
+                                        <td>{{test.vdrl}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HBS (ag)</th>
+                                        <td>{{test.hbs_ag}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HBS (ab)</th>
+                                        <td>{{test.hbs_ag}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HIV Aids</th>
+                                        <td>{{test.hiv_aids}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ASO TITRE</th>
+                                        <td>{{test.aso_titre}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>R.A FACTOR</th>
+                                        <td>{{test.ra_factor}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>H. PYLORI</th>
+                                        <td>{{test.h_pylori}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>TB. ICT</th>
+                                        <td>{{test.tb_ict}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>TYPHIOD</th>
+                                        <th>Ig G:</th>
+                                        <td style="text-align: left;">{{test.typhiod_ig}}</td>
+                                        <th>IgM:</th>
+                                        <td>{{test.typhiod_igm}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>DANGUE NS1</th>
+                                        <td>{{test.dangue_ns1}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>DANGUE</th>
+                                        <th>Ig G:</th>
+                                        <td>{{test.dangue_ig}}</td>
+                                        <th>IgM:</th>
+                                        <td>{{test.dangue_igm}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>BLOOD GROUP</th>
+                                        <td>{{test.bloodgroup}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>RH FACTOR</th>
+                                        <td>{{test.rh_factor}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>CROSS MATCH</th>
+                                        <td>{{test.cross_match}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>PREGNANCY</th>
+                                        <td>{{test.pregnancy}}</td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </tbody>
+                        {% endfor %}
+                    </table>
                     
-
-
-
-
-
-
+                    {% endif %}
                 </tbody>
             </table>
-        </div>
+        </div>                    
+    {% endif %}                
+
+
+
+
+
+
+
     </div>
 </div>
 
