@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 
 
+
 #---------------------------------Doctor & Patients Forms Start Here----------------------------------------------------------------------
 
 class RegisterPatientForm(forms.ModelForm):
@@ -256,7 +257,7 @@ class SemenTestForm(forms.ModelForm):
             'sperm_concentration': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
             'total_motility': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
             'progressive_motility': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
-            'sperm_morphlogy': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
+            'sperm_morphology': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
 
         }
 # CRP Test Form
@@ -336,8 +337,8 @@ class LiverFunctionTestForm(forms.ModelForm):
             'ast_got': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
             'acp': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
             'alp': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
-            't_bill': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
-            'd_bill': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
+            't_bil': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
+            'd_bil': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
             'che': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
             'tp': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),
             'alb': forms.TextInput(attrs={'class':'form-control fw-bold', 'placeholder':'Enter Value'}),

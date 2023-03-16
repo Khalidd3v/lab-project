@@ -202,22 +202,61 @@ def selected_tests(request):
             test11.patient_id = patient_id
             test11.save()
         return redirect('result', pk=patient_id)
-    return render(request, 'app/selected_tests.html', {'test1_form': test1_form,
+    return render(request, 'app/selected_tests.html', 
+                            {'test1_form': test1_form,
                              'test2_form': test2_form, 'test3_form': test3_form,
-                               'test4_form': test4_form, 'test5_form': test5_form,
-                               'test6_form': test6_form, 'test7_form': test7_form
-                                                       })
+                                'test4_form': test4_form, 'test5_form': test5_form,
+                                    'test6_form': test6_form, 'test7_form': test7_form,
+                                       'test8_form': test8_form, 'test9_form': test9_form,
+                                          'test10_form': test10_form, 'test11_form': test11_form,
+                                        })
 
 
 
 @login_required
 def testresult(request, pk):
+
     # Get the patient object with the given ID
     patient = Patient.objects.get(pk=pk)
+
     # Get all the CBC tests related to this patient
     cbc_tests = patient.cbc_tests.all()
+
     # Get all the biochemistry tests related to this patient
     biochemistry_tests = patient.bio_chemistry_tests.all()
+
     # Get all the stool r/e tests related to this patient
     stoolre_tests = patient.stoolre_tests.all()
-    return render(request, 'app/generate_result.html', {'patient': patient, 'cbc_tests': cbc_tests, 'biochemistry_tests': biochemistry_tests, 'stoolre_tests': stoolre_tests})
+
+    # Get all the urine r/e tests related to this patient
+    urine_tests = patient.urine_tests.all()
+
+    # Get all the serology tests related to this patient
+    serology_tests = patient.serology_tests.all()
+
+     # Get all the semen tests related to this patient
+    semen_tests = patient.semen_tests.all()
+
+    # Get all the crps tests related to this patient
+    crp_tests = patient.crp_tests.all()
+
+    # Get all the stool r/e tests related to this patient
+    thyroid_tests = patient.thyroid_tests.all()
+
+    # Get all the kedney function tests related to this patient
+    kedney_function_tests = patient.kedney_function_tests.all()
+
+    # Get all the liver funtion tests related to this patient
+    liver_function_tests = patient.liver_function_tests.all()
+
+    # Get all the glucose bf tests related to this patient
+    glucose_bf_tests = patient.glucose_bf_tests.all()
+
+
+    
+    return render(request, 'app/generate_result.html', 
+                  {'patient': patient, 'cbc_tests': cbc_tests,
+                    'biochemistry_tests': biochemistry_tests, 'stoolre_tests': stoolre_tests,
+                        'urine_tests':urine_tests,'serology_tests':serology_tests,'semen_tests':semen_tests,
+                            'crp_tests':crp_tests, 'thyroid_tests':thyroid_tests, 'kedney_function_tests':kedney_function_tests,
+                                'liver_function_tests':liver_function_tests, 'glucose_bf_tests':glucose_bf_tests,})

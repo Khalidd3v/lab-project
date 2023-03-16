@@ -86,7 +86,6 @@ class BioChemistryTest(models.Model):
     s_cholestrol = models.CharField(max_length=20, blank=True)
     triglycerides = models.CharField(max_length=20, blank=True)
     hdl = models.CharField(max_length=20, blank=True)
-    ldl = models.CharField(max_length=20, blank=True)
     ldh = models.CharField(max_length=20, blank=True)
     t_protien = models.CharField(max_length=20, blank=True)
     cpk = models.CharField(max_length=20, blank=True)
@@ -109,7 +108,7 @@ class StoolRETest(models.Model):
 # urine_re
 class UrineReTest(models.Model):
     
-    patient = models.ForeignKey(Patient,  on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, related_name='urine_tests',  on_delete=models.CASCADE)
     ph = models.CharField(max_length=20, blank=True)
     sugar = models.CharField(max_length=20, blank=True)
     albumin = models.CharField(max_length=20, blank=True)
@@ -126,7 +125,7 @@ class UrineReTest(models.Model):
 #serology
 class SerologyTest(models.Model):
     
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, related_name='serology_tests', on_delete=models.CASCADE)
     twenty = models.CharField(max_length=20, blank=True)
     fourty = models.CharField(max_length=20, blank=True)
     sixty = models.CharField(max_length=20, blank=True)
@@ -186,7 +185,7 @@ class SerologyTest(models.Model):
 # semen 
 class SemenTest(models.Model):
     
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, related_name='semen_tests', on_delete=models.CASCADE)
     total_sperm = models.CharField(max_length=20, blank=True)
     ejaculate_volume = models.CharField(max_length=20, blank=True)
     sperm_concentration = models.CharField(max_length=20, blank=True)
@@ -197,13 +196,13 @@ class SemenTest(models.Model):
 # crp 
 class CRPTest(models.Model):
     
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, related_name='crp_tests', on_delete=models.CASCADE)
     crps = models.CharField(max_length=20, blank=True)
 
 # thyroid
 class ThyroidTest(models.Model):
     
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, related_name='thyroid_tests', on_delete=models.CASCADE)
     tsh = models.CharField(max_length=20, blank=True)
     t4 = models.CharField(max_length=20, blank=True)
     t4_free = models.CharField(max_length=20, blank=True)
@@ -216,7 +215,7 @@ class ThyroidTest(models.Model):
 # kedney function test
 class KedneyFunctionTest(models.Model):
     
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, related_name='kedney_function_tests', on_delete=models.CASCADE)
     bun = models.CharField(max_length=20, blank=True)
     cr = models.CharField(max_length=20, blank=True)
     ua = models.CharField(max_length=20, blank=True)
@@ -233,7 +232,7 @@ class KedneyFunctionTest(models.Model):
 # Liver Function
 class LiverFunctionTest(models.Model):
 
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, related_name='liver_function_tests', on_delete=models.CASCADE)
     alt_gpt = models.CharField(max_length=20, blank=True)
     ast_got = models.CharField(max_length=20, blank=True)
     acp = models.CharField(max_length=20, blank=True)
@@ -251,7 +250,7 @@ class LiverFunctionTest(models.Model):
 # Glucose_BF Test Model
 class Glucose_BFTest(models.Model):
 
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, related_name='glucose_bf_tests', on_delete=models.CASCADE)
     glu = models.CharField(max_length=20, blank=True)
     apo_a1 = models.CharField(max_length=20, blank=True)
     tg = models.CharField(max_length=20, blank=True)
