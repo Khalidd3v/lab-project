@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 LOGIN_URL= reverse_lazy('login')
 
 
+
 # Application definition
 
 INSTALLED_APPS = [

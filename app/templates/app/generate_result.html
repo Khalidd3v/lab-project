@@ -1,0 +1,795 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Test Result
+{% endblock title %}
+    
+
+{% block content %}
+<div style="background-color: white; margin-left: 1rem;" class="container-fluid pt-4">
+    <div class="row">
+        <div class="col-4">
+            <img class="mb-4" src="https://cdn-icons-png.flaticon.com/512/1974/1974528.png" width="150px" alt="">
+        </div>
+        <div class="col-8 mt-3">
+            <h2><span class="opacity-50" style="color:red;" > Ayaz </span>Bio Lab Clinical Laboratory</h2>
+
+            <hr>
+            <h4 style="margin-left: 5rem; margin-top: 10px;" class="lead hi">Batay Kaly Buneer</h4>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row my-2">
+        <div class="col-4">
+            <h5>Name:- {{patient.name}} </h5>
+
+            {% if patient.age == None %}
+            <h5>Age:- </h5>
+            {% else %}
+            <h5>Age:- {{patient.age}}</h5>
+            {% endif %}
+
+
+            <h5>Refer By:- {{patient.doctor | title }}</h5>
+        </div>
+        <div class="col-4">
+            <h5>Gender: {{patient.gender}}</h5>
+        </div>
+        <div class="col-4">
+            <h5>Report Date: {{patient.report_date}}</h5>
+            <h5>Patient ID : {{patient.id}}</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10 fs-sm-6">
+            
+            <table class="table mb-5">
+                <thead class="bg-light">
+                    <tr>
+                        <th scope="col">Test Elements</th>
+                        <th scope="col">Test RESULT</th>
+                        <th scope="col">Test NORMAL VALUES</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if cbc_tests %}
+                            <div class="this">
+                                
+                                {% for test in cbc_tests %}
+                                    
+                                <tr>
+                                    <td>HAEMOGLOBIN</td>
+                                    <td class="tr">{{test.Haemoglobin1}}    ~ G/dl</td>
+                                    <td>M-13-18F 12-16</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>RED CELLS</td>
+                                    <td class="tr">{{test.Total_RBC}}    ~ 10^6/L</td>
+                                    <td>M-4.5-6.6 F 3.9-5.6</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>HCT</td>
+                                    <td class="tr">{{test.HCT}}    ~ %</td>
+                                    <td>M.40-54 F 35-47</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>MCV</td>
+                                    <td class="tr">{{test.MCV}}    ~ FL</td>
+                                    <td>Ad. 76-96 Ch. 80-105</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>MCH</td>
+                                    <td class="tr">{{test.MCH}}    ~ Pg</td>
+                                    <td>Ad. 27-32 Ch. 24-31</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>MCHC</td>
+                                    <td class="tr">{{test.MCHC}}    ~ G/dl</td>
+                                    <td>Ad. 30-35 Ch. 28-34</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>TOTAL WHITE CELLS</td>
+                                    <td class="tr">{{test.Total_WBC}}    ~ ul</td>
+                                    <td>4,000--11,000</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>NEUTROPHILS</td>
+                                    <td class="tr">{{test.Neutrophils}}    ~ %</td>
+                                    <td>40----75</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>LYMPHOCYTES</td>
+                                    <td class="tr">{{test.Lymphocytes}}    ~ %</td>
+                                    <td>20-----45</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>MONOCYTES</td>
+                                    <td class="tr">{{test.Monocytes}}    ~ %</td>
+                                    <td>02-----10</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>EOSINOPHILS</td>
+                                    <td class="tr">{{test.Eosonophils}}    ~ %</td>
+                                    <td>01-----06</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>PLATELET COUNT</td>
+                                    <td class="tr">{{test.Platelet}}    ~ ul</td>
+                                    <td>150,000---450,000</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>ESR</td>
+                                    <td class="tr">{{test.ESR}}    ~ ul</td>
+                                    <td>150,000---450,000</td>
+                                    
+                                </tr>
+                                {% endfor %}
+                            </div>
+                    {% endif %}
+
+            
+
+                    {% if biochemistry_tests %}
+                        <div>
+                            
+                            {% for test in biochemistry_tests %}
+                                
+                            
+                                
+                            <tr>
+                                <td>HBA1C</td>
+                                <td class="tr">{{test.hba1c}}</td>
+                                <td>4% - 5.6%</td>
+                            </tr>
+                            <tr>
+                                <td>B-SUGAR(R)</td>
+                                <td class="tr">{{test.b_sugar_r}}</td>
+                                <td>70 to 99 mg/dL</td>
+                            </tr>
+                            <tr>
+                                <td>B-SUGAR(F)</td>
+                                <td class="tr">{{test.b_sugar_f}}</td>
+                                <td>100 to 125 mg/dL</td>
+                            </tr>
+                            <tr>
+                                <td>SGPT(ALT)</td>
+                                <td class="tr">{{test.sgpt_alt}}</td>
+                                <td>4 to 36 U/L</td>
+                            </tr>
+                            <td>S.GOT(AST)</td>
+                            <td class="tr">{{test.sgot_ast}}</td>
+                            <td>8 to 33 U/L</td>
+                            </tr>
+                            <td>ALK-PHOSPHATASE</td>
+                            <td class="tr">{{test.alk_phosphatase}}</td>
+                            <td>44 to 147(IU/L)</td>
+                            </tr>
+                            <td>S.BILLIRUBIN-TOTAL</td>
+                            <td class="tr">{{test.sbillirubin_total}}</td>
+                            <td>1.2 milligrams</td>
+                            </tr>
+                            <td>S.BILLIRUBIN-Direct</td>
+                            <td class="tr">{{test.sbillirubin_direct}}</td>
+                            <td>less than 0.3 mg/dL</td>
+                            </tr>
+                            <td>S.BILLIRUBIN Indirect</td>
+                            <td class="tr">{{test.sbillirubin_indirect}}</td>
+                            <td>0.2-0.8 mg/dL</td>
+                            </tr>
+                            <td>S.CALCIUM</td>
+                            <td class="tr">{{test.s_calium}}</td>
+                            <td>8.5 to 10.2 mg/dL</td>
+                            </tr>
+                            <td>S.URIC ACID</td>
+                            <td class="tr">{{test.s_uric_acid}}</td>
+                            <td>3.5 to 7.2 milligrams</td>
+                            </tr>
+                            <tr>
+                                <td>B.UREA</td>
+                                <td class="tr">{{test.b_urea}}</td>
+                                <td>6 to 24 mg/dL</td>
+                            </tr>
+                            <td>S.CREATININE</td>
+                            <td class="tr">{{test.s_creatinine}}</td>
+                            <td>0.74 to 1.35 mg/dL</td>
+                            </tr>
+                            <tr>
+                                <td>S.AMYLASE</td>
+                                <td class="tr">{{test.s_amylase}}</td>
+                                <td>40 to 140 liter (U/L)</td>
+                            </tr>
+                            <td>S.CHOLESTROL</td>
+                            <td class="tr">{{test.s_cholestrol}}</td>
+                            <td>less than 200</td>
+                            </tr>
+                            <td>TRIGLYCERIDES</td>
+                            <td class="tr">{{test.triglycerides}}</td>
+                            <td>Less than 150(mg/dL)</td>
+                            <tr>
+                                <td>LDL</td>
+                                <td class="tr">{{test.hdl}}</td>
+                                <td>less than 100</td>
+                            </tr>
+                            <tr>
+                                <td>LDH</td>
+                                <td class="tr">{{test.ldh}}</td>
+                                <td>105 to 333(IU/L)</td>
+                            </tr>
+                            <tr>
+                                <td>T.PROTIEN</td>
+                                <td class="tr">{{test.t_protien}}</td>
+                                <td>6.0 to 8.3 grams</td>
+                            </tr>
+                            <tr>
+                                <td>CPK</td>
+                                <td class="tr">{{test.cpk}}</td>
+                                <td>10 to 120</td>
+                            </tr>
+                            <tr>
+                                <td>CRP</td>
+                                <td class="tr">{{test.crp}}</td>
+                                <td>Less than 10 mg/L</td>
+                            </tr>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if stoolre_tests %}
+                    <div>
+                        
+                        {% for test in stoolre_tests %}
+                            
+                        
+                            
+                        <tr>
+                            <td>COLOR</td>
+                            <td class="tr">{{test.color}}</td>
+                            <td>Brown</td>
+                            <td></td>
+                        </tr>
+                        <td>MUCUS</td>
+                        <td class="tr">{{test.mucus}}</td>
+                        <td>A small amount</td>
+                        <td></td>
+                        </tr>
+                        <tr>
+                            <td>OVA</td>
+                            <td class="tr">{{test.ova}}</td>
+                            <td>Consult with Dr.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CYST</td>
+                            <td class="tr">{{test.cyst}}</td>
+                            <td>Consult with Dr.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>PUS CELLS</td>
+                            <td class="tr">{{test.puss_cells}}</td>
+                            <td>5-10 per HPF</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>RBCS</td>
+                            <td class="tr">{{test.rbcs}}</td>
+                            <td>Consult with Dr.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>BACKTERIA</td>
+                            <td class="tr">{{test.backteria}}</td>
+                            <td>less than 100,000 (CFUs)</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>STOOL H.PYLORI</td>
+                            <td class="tr">{{test.stool_hpylori}}</td>
+                            <td>Consult with Dr.</td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% if urine_tests %}
+                    <div>
+                        
+                        {% for test in urine_tests %}
+                            
+                    
+                            
+                        <tr>
+                            <td>PH</td>
+                            <td class="tr">{{test.ph}}    ~ pH</td>
+                            <td>4.6 to 8.0</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>SUGAR</td>
+                            <td class="tr">{{test.sugar}}    ~ mmol/L</td>
+                            <td>0 to 0.8</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>ALBUMIN</td>
+                            <td class="tr">{{test.albumin}}   ~ mg/g</td>
+                            <td>less than 30</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>PUSS CELLS</td>
+                            <td class="tr">{{test.m_puss_cells}}    ~ HPF</td>
+                            <td>0 to 5</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>RBC's</td>
+                            <td class="tr">{{test.rbcs}}    ~ RBC/HPF</td>
+                            <td>4 red blood cells</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>EPTH CELLS</td>
+                            <td class="tr">{{test.epth_cells}}    ~ *</td>
+                            <td>15 to 30</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CASTS</td>
+                            <td class="tr">{{test.casts}}    ~ *</td>
+                            <td>0-2 casts per low-power field</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CA-OXALATE</td>
+                            <td class="tr">{{test.ca_oxalate}}    ~ milligrams</td>
+                            <td>less than 50</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>BACKTERIA</td>
+                            <td class="tr">{{test.m_backteria}}    ~ UTIs</td>
+                            <td>up to 10,000</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>OTHER</td>
+                            <td class="tr">{{test.other}}    ~ UTIs</td>
+                            <td>****</td>
+                        </tr>
+                        <tr>
+                            <td>URINE B.J PROTIEN</td>
+                            <td class="tr">{{test.urine_protien}}  ~ *</td>
+                            <td>0.26 to 1.65</td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+
+                    {% if Serology_tests %}
+    <table class="table">                
+        <thead>
+            
+            {% for test in Serology_tests %}
+
+                
+            <tr style="column-gap: 30px;">
+                <th scope="col" rowspan="3">Widal &nbsp;</th>
+                <th>Dilution</th>
+                <th>1/20</th>
+                <th>1/40</th>
+                <th>1/80</th>
+                <th>1/160</th>
+                <th>1/320</th>
+            </tr>
+            <tr>
+                <th>TO</th>
+                <td>{{test.twenty}}</td>
+                <td>{{test.fourty}}</td>
+                <td>{{test.sixty}}</td>
+                <td>{{test.one_sixty}}</td>
+                <td>{{test.three_twenty}}</td>
+            </tr>
+            <tr>
+                <th>TH</th>
+                <td>{{test.th_twenty}}</td>
+                <td>{{test.th_fourty}}</td>
+                <td>{{test.th_sixty}}</td>
+                <td>{{test.th_one_sixty}}</td>
+                <td>{{test.th_three_twenty}}</td>
+            </tr>
+            <tr>
+                <th scope="col" rowspan="3">Brucella &nbsp;</th>
+                <th>Dilution</th>
+                <td>{{test.dil_twenty}}</td>
+                <td>{{test.dil_fourty}}</td>
+                <td>{{test.dil_sixty}}</td>
+                <td>{{test.dil_one_sixty}}</td>
+                <td>{{test.dil_three_twenty}}</td>
+            </tr>
+            <tr>
+                <th>BA</th>
+                <td>{{test.ba_twenty}}</td>
+                <td>{{test.ba_fourty}}</td>
+                <td>{{test.ba_sixty}}</td>
+                <td>{{test.ba_one_sixty}}</td>
+                <td>{{test.ba_three_twenty}}</td>
+            </tr>
+            <tr>
+                <th>BM</th>
+                <td>{{test.bm_twenty}}</td>
+                <td>{{test.bm_fourty}}</td>
+                <td>{{test.bm_sixty}}</td>
+                <td>{{test.bm_one_sixty}}</td>
+                <td>{{test.bm_three_twenty}}</td>
+            </tr>
+            {% endfor %}
+        </thead>
+        <tbody>
+            <tr>
+                <th></th>
+                <th>Taxo Plasma</th>
+                <td>ig:</td>
+                <td>{{test.ig_taxo}}</td>
+                <td>igm:</td>
+                <td>{{test.igm_taxo}}</td>
+            </tr>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>VDRL</th>
+                        <td>{{test.vdrl}}</td>
+                    </tr>
+                    ...
+                </thead>
+            </table>
+        </tbody>
+    </table>
+{% endif %}
+
+                            {% if semen_tests %}
+                            <div>
+                                {% for test in semen_tests %}
+                                <tr>
+                                    <td>Total sperm count in ejaculate</td>
+                                    <td>{{test.total_sperm}}</td>
+                                    <td>39-928 million</td>
+                                    <td>milliliter (mL)</td>
+                                </tr>
+                                <tr>
+                                    <td>Ejaculate volume</td>
+                                    <td>{{test.ejaculate_volume}}</td>
+                                    <td>1.5-7.6 ml</td>
+                                </tr>
+                                <tr>
+                                    <td>Sperm concentration</td>
+                                    <td>{{test.sperm_concentration}}</td>
+                                    <td>15-259 million per mL</td>
+                                </tr>
+                                <tr>
+                                    <td>Total motility</td>
+                                    <td>{{test.total_motility}}</td>
+                                    <td>40-81 percent</td>
+                                </tr>
+                                <tr>
+                                    <td>Progressive motility</td>
+                                    <td>{{test.progressive_motility}}</td>
+                                    <td>32-75 percent</td>
+                                </tr>
+                                <tr>
+                                    <td>Sperm morphology</td>
+                                    <td>{{test.sperm_morphology}}</td>
+                                    <td>4-48 percent</td>
+                                </tr>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            {% if thyroid_tests %}
+                            <div>
+                                
+                                {% for test in thyroid_tests %}
+                                    
+                                
+                                    
+                                <tr>
+                                    <td>TSH</td>
+                                    <td>{{test.tsh}}</td>
+                                    <td>027 - 420</td>
+                                    <td>uIU/mL</td>
+                                </tr>
+                                <tr>
+                                    <td>T4</td>
+                                    <td>{{test.t4}}</td>
+                                    <td>4.5 - 11.7</td>
+                                    <td>nmol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>T4, free</td>
+                                    <td>{{test.t4_free}}</td>
+                                    <td>0.93 - 1.70</td>
+                                    <td>ng/dL</td>
+                                </tr>
+                                <tr>
+                                    <td>T3</td>
+                                    <td>{{test.t3}}</td>
+                                    <td>80 - 200</td>
+                                    <td>ng/dL</td>
+                                </tr>
+                                <tr>
+                                    <td>T3, free</td>
+                                    <td>{{test.t3_free}}</td>
+                                    <td>19 yrs - 2.0 - 4.4</td>
+                                    <td>pg/mL</td>
+                                </tr>
+                                <tr>
+                                    <td>Reverse T3</td>
+                                    <td>{{test.reverse_t3}}</td>
+                                    <td>8 - 24</td>
+                                    <td>ng/dL</td>
+                                </tr>
+                                <tr>
+                                    <td>Anti-Thyroglobulin Antybody</td>
+                                    <td>{{test.anti_thyrog_antibody}}</td>
+                                    <td>115</td>
+                                    <td>IU/mL</td>
+                                </tr>
+                                <tr>
+                                    <td>Anti-Thyroid Peroxidase Antibody</td>
+                                    <td>{{test.anti_thyrog_peroxidase}}</td>
+                                    <td>34</td>
+                                    <td>IU/mL</td>
+                                </tr>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            
+                            {% if kedney_function_tests %}
+                                <div>
+                                    
+                                    {% for test in kedney_function_tests %}
+                                        
+                                    
+                                        
+                                    <tr>
+                                        <td>BUN</td>
+                                        <td>{{test.bun}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CR</td>
+                                        <td>{{test.cr}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UA</td>
+                                        <td>{{test.ua}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ca</td>
+                                        <td>{{test.ca}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>K</td>
+                                        <td>{{test.k}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>NA</td>
+                                        <td>{{test.na}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Co2 Cp</td>
+                                        <td>{{test.co2_cp}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CL</td>
+                                        <td>{{test.cl}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>FE</td>
+                                        <td>{{test.fe}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>MG</td>
+                                        <td>{{test.mg}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ZN</td>
+                                        <td>{{test.zn}}</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>P</td>
+                                        <td>{{test.p}}</td>
+                                        <td></td>
+                                    </tr>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+                            {% if liver_function_tests %}
+                            <div>
+                                
+                                {% for test in liver_function_tests %}
+                                    
+                                
+                                    
+                                <tr>
+                                    <td>Alt-GPT</td>
+                                    <td>{{test.alt_gpt}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>AST-GOT</td>
+                                    <td>{{test.ast_got}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>ACP</td>
+                                    <td>{{test.acp}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>ALP</td>
+                                    <td>{{test.alp}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>T_BIL</td>
+                                    <td>{{test.t_bil}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>D_BIL</td>
+                                    <td>{{test.d_bil}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>CHE</td>
+                                    <td>{{test.che}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>TP</td>
+                                    <td>{{test.tp}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>ALB</td>
+                                    <td>{{test.alb}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>FB</td>
+                                    <td>{{test.fb}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>NHS</td>
+                                    <td>{{test.nhs}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Y_GT</td>
+                                    <td>{{test.y_gt}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>TTT</td>
+                                    <td>{{test.ttt}}</td>
+                                    <td></td>
+                                </tr>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                            {% if glucose_bf_tests %}
+                            <div>
+                                
+                                {% for test in glucose_bf_tests %}
+                                    
+                                
+                                    
+                                <tr>
+                                    <td>GLU</td>
+                                    <td>{{test.glu}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>APO-A1</td>
+                                    <td>{{test.apo_a1}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>TG</td>
+                                    <td>{{test.tg}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>HDL-C</td>
+                                    <td>{{test.hdl_c}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>LDL-C</td>
+                                    <td>{{test.ldl_c}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>HBAIC-G</td>
+                                    <td>{{test.hbaic_g}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>APO-B</td>
+                                    <td>{{test.apo_b}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>T-CHO</td>
+                                    <td>{{test.t_cho}}</td>
+                                    <td></td>
+
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% if crp_tests %}
+                        <div>
+                            
+                            {% for test in crp_tests %}
+                                
+                            
+                                
+                            <tr>
+                                <td>CRPS</td>
+                                <td>{{test.crps}}</td>
+                                <td></td>
+                            </tr>
+
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                                
+
+                        </tbody>
+                    </table>
+                    
+
+
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
