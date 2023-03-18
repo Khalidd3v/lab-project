@@ -7,7 +7,7 @@ urlpatterns = [
     path("add-patient/", views.add_patient, name="add_patient"),
     path("add-doctor/", views.add_doctor, name="add_doctor"),
     path("manage-patient/", views.manage_patient, name="manage_patient"),
-    path("delete/<str:pk>/", views.deleteit, name="delete"),
+    path("manage-patient/delete/<str:pk>/", views.deleteit, name="delete"),
     path("update/<str:pk>/", views.updatepatient, name="update"),
     path("login", views.loginuser, name="login"),
     path("logout/", views.logoutuser, name="logout"),
@@ -17,6 +17,13 @@ urlpatterns = [
     path('Test-Result/<int:pk>/', views.testresult, name='result'),
     path('upload/', views.upload_image, name='upload_image'),
     path('images/', views.my_images, name='my_images'),
+
+    # --------- Testing Code Urls Here ------------
+
+    path("patient-api/", views.patientapi, name="patientapi"),
+    
+
+    
     
 
   

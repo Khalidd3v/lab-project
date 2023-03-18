@@ -5,6 +5,7 @@ from .forms import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
+from django.http import JsonResponse
 
 
 
@@ -260,3 +261,17 @@ def testresult(request, pk):
                         'urine_tests':urine_tests,'serology_tests':serology_tests,'semen_tests':semen_tests,
                             'crp_tests':crp_tests, 'thyroid_tests':thyroid_tests, 'kedney_function_tests':kedney_function_tests,
                                 'liver_function_tests':liver_function_tests, 'glucose_bf_tests':glucose_bf_tests,})
+
+
+
+#all patient management Code
+@login_required
+def patientapi(request):
+    patients = Patient.objects.all().values()
+    return JsonResponse({'patients': list(patients)})
+
+
+
+
+
+    
